@@ -11,9 +11,7 @@ int _printf(const char *format, ...)
 {
 	va_list parameter;
 	int gen_counter;
-	int str_counter;
 	int num_character;
-	char *str;
 
 	num_character = 0;
 	va_start(parameter, format);
@@ -21,25 +19,14 @@ int _printf(const char *format, ...)
 	{
 		if (format[gen_counter] != '%')
 		{
-			_putchar(format[gen_counter]);
-			num_character++;
-		}
-		else if (format[gen_counter] == '%')
-		{
 			if (format[gen_counter + 1] == 'c')
 			{
-				_putchar(va_arg(parameter, int));
+				num_character += character(parameter);
 				gen_counter++;
-				num_character++;
-			}
-			else if (format[gen_counter + 1] == 's')
+		}
+			else if (format[gen_counter] == 's')
 			{
-				str = va_arg(parameter, char*);
-				for (str_counter = 0; str[str_counter] != '\0'; str_counter++)
-				{
-					_putchar(str[str_counter]);
-					num_character++;
-				}
+				num_character += string_character(parameter);
 				gen_counter++;
 			}
 			else if (format[gen_counter + 1] == '%')
@@ -48,6 +35,11 @@ int _printf(const char *format, ...)
 				gen_counter++;
 				num_character++;
 			}
+		}
+		else
+		{
+			_putchar(format[gen_counter]);
+			num_character++;
 		}
 	}
 	va_end(parameter);
