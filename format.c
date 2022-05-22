@@ -2,21 +2,22 @@
 #include <stdio.h>
 
 /**
-  * character - Function return type is character
+  * character - Function prints character when %c is used
   * @parameter: variable that holds a va_list of arguments
   * Return: returns a character value
   */
 
 int character(va_list parameter)
 {
-	int x = va_arg(parameter, int);
-
+	int x;
+       
+	x = va_arg(parameter, int);
 	_putchar(x);
 	return (1);
 }
 
 /**
-  * string_character - Function return type is string
+  * string_character - Function prints string when %s is used
   * @parameter: variable that holds a va_list of arguments
   * Return: returns a character value
   */
@@ -24,7 +25,8 @@ int character(va_list parameter)
 int string_character(va_list parameter)
 {
 	int str_counter;
-	char *str = va_arg(parameter, char*);
+	char *str;
+	str = va_arg(parameter, char*);
 
 	for (str_counter = 0; str[str_counter] != '\0'; str_counter++)
 	{

@@ -16,14 +16,14 @@ int _printf(const char *format, ...)
 	va_start(parameter, format);
 	for (gen_counter = 0; format[gen_counter] != '\0'; gen_counter++)
 	{
-		if (format[gen_counter] != '%')
+		if (format[gen_counter] == '%')
 		{
 			if (format[gen_counter + 1] == 'c')
 			{
 				num_character += character(parameter);
 				gen_counter++;
-		}
-			else if (format[gen_counter] == 's')
+			}
+			else if (format[gen_counter + 1] == 's')
 			{
 				num_character += string_character(parameter);
 				gen_counter++;
