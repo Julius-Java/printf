@@ -10,7 +10,7 @@
 int character(va_list parameter)
 {
 	int x;
-       
+
 	x = va_arg(parameter, int);
 	_putchar(x);
 	return (1);
@@ -26,6 +26,7 @@ int string_character(va_list parameter)
 {
 	int str_counter;
 	char *str;
+
 	str = va_arg(parameter, char*);
 
 	for (str_counter = 0; str[str_counter] != '\0'; str_counter++)
