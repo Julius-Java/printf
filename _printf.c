@@ -28,6 +28,11 @@ int _printf(const char *format, ...)
 				num_character += string_character(parameter);
 				gen_counter++;
 			}
+			else if (format[gen_counter + 1 == 'd' || format[gen_counter] == 'i']
+			{
+				num_character += print_digit(parameter);
+				gen_counter++;
+			}
 			else if (format[gen_counter + 1] == '%')
 			{
 				_putchar('%');
